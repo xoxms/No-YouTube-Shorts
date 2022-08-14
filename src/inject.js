@@ -1,10 +1,35 @@
 const shorts = "https://www.youtube.com/shorts/";
 let url;
 setInterval(function () {
-	url = window.location.href;
-	if (url.startsWith(shorts)) {
-		const videoId = url.split(shorts)[1];
+	run_2();
+	run_1();
+}, 3000);
 
-		window.location.href = `https://www.youtube.com/watch?v=${videoId}`;
+function run_1() {
+	url = window.location.href;
+	if (isShorts(url)) {
+		window.location.href = convert(url);
 	}
-}, 2500);
+}
+
+function run_2() {
+	const elements = document.getElementsByTagName("a");
+	for (let i = 0; i < elements.length; i++) {
+		const element = elements[i];
+		if (isShorts(element.href)) {
+			element.href = convert(element.href);
+		}
+	}
+}
+
+function convert(link) {
+	return `https://www.youtube.com/watch?v=${getVideoId(link)}`;
+}
+
+function getVideoId(link) {
+	return link.split(shorts)[1];
+}
+
+function isShorts(link) {
+	return link.startsWith(shorts);
+}
