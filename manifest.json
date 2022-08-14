@@ -5,22 +5,21 @@
   "version": "1.0",
   "author": "Monmcgt",
   "permissions": [
-	  "https://*.youtube.com/*"
+    "https://*.youtube.com/*"
   ],
   "content_scripts": [
     {
       "matches": [
-		  "https://*.youtube.com/*"
+        "https://*.youtube.com/*"
       ],
-	  "js": [
-		  "src/inject.js"
-	  ],
+      "js": [
+        "src/inject.js"
+      ],
       "css": [
-		  "src/inject.css"
+        "src/inject.css"
       ]
     }
   ],
-
   "browser_action": {
     "default_popup": "",
     "default_title": ""
